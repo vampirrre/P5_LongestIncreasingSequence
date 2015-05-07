@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace P5_LongestIncreasingSequence
+{
+    class P5_LongestIncreasingSequence
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            int[] numbs = input.Split().Select(int.Parse).ToArray();
+
+            int counter = 1;
+            int maxLength = 1;
+            int end = 0;
+
+            Console.Write (numbs[0] + " ");
+
+            for (int i = 1; i < numbs.Length; i++)
+            {
+                if (numbs[i] > numbs[i - 1])
+                {
+                    counter++;
+                    Console.Write (numbs[i] + " ");
+                }
+                else
+                {
+                    counter = 1;
+                    Console.WriteLine();
+                    Console.Write (numbs[i] + " ");
+                }
+                if (counter > maxLength)
+                {
+                    maxLength = counter;
+                    end = i;
+                }
+            }
+            Console.WriteLine ();
+            Console.Write ("Longest:" );
+
+            for (int j = end - maxLength + 1; j <= end; j++)
+            {
+                Console.Write (numbs[j] + " ");
+            }
+        }
+    }
+}
